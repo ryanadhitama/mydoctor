@@ -6,12 +6,4 @@ import ILCatPsikiater from './cat-dok-psikiater.svg';
 import ILCatObat from './cat-dok-obat.svg';
 import ILHospitalBG from './hospitals-background.png';
 
-export {
-  ILLogo,
-  ILGetStarted,
-  ILNullPhoto,
-  ILCatUmum,
-  ILCatPsikiater,
-  ILCatObat,
-  ILHospitalBG,
-};
+export { ILLogo, ILGetStarted, ILNullPhoto, ILCatUmum, ILCatPsikiater, ILCatObat, ILHospitalBG };

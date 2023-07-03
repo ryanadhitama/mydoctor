@@ -5,7 +5,7 @@ export enum FontSize {
   H4 = 18,
   H5 = 16,
   H6 = 14,
-  H7 = 12,
+  H7 = 12
 }
 
 export enum Color {
@@ -16,5 +16,5 @@ export enum Color {
   GRAY = '#E9E9E9',
   INACTIVE = '#DADADA',
   CARD_LIGHT = '#EDFCFD',
-  BORDER = '#EEEEEE',
+  BORDER = '#EEEEEE'
 }

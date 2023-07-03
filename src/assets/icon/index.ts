@@ -39,5 +39,5 @@ export {
   IconRate,
   IconHelp,
   IconMale,
-  IconFemale,
+  IconFemale
 };

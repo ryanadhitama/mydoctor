@@ -35,5 +35,5 @@ export {
   DummyNews3,
   DummyHospital1,
   DummyHospital2,
-  DummyHospital3,
+  DummyHospital3
 };
