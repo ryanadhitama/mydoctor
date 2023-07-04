@@ -41,10 +41,10 @@
     "node": ">=16"
   },
   "lint-staged": {
-    "apps/**/*.{js,ts,jsx,tsx}": [
+    "src/**/*.{js,ts,jsx,tsx}": [
       "eslint --cache --fix"
     ],
-    "apps/**/*.{js,ts,jsx,tsx,css}": [
+    "src/**/*.{js,ts,jsx,tsx,css}": [
       "prettier --write"
     ]
   }
