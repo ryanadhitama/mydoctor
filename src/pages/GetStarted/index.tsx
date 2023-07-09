@@ -4,7 +4,11 @@ import { ILLogo, ILGetStarted } from '../../assets';
 import { Button, Gap } from '../../components';
 import { colors, fonts } from '../../utils';
 
-const GetStarted = () => {
+export type GetStartedProps = {
+  navigation: any;
+};
+
+const GetStarted = ({ navigation }: GetStartedProps) => {
   return (
     <ImageBackground source={ILGetStarted} style={styles.page}>
       <View>
@@ -12,7 +16,7 @@ const GetStarted = () => {
         <Text style={styles.title}>Konsultasi dengan dokter jadi lebih mudah & fleksibel</Text>
       </View>
       <View>
-        <Button title="Get Started" onPress={() => false} />
+        <Button title="Get Started" onPress={() => navigation.navigate('Register')} />
         <Gap height={16} />
         <Button type="secondary" title="Sign In" onPress={() => false} />
       </View>

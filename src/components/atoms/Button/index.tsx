@@ -5,7 +5,7 @@ import IconOnly from './IconOnly';
 import BtnIconSend from './BtnIconSend';
 
 type ButtonProps = {
-  title: string;
+  title?: string;
   type?: string;
   icon?: any;
   onPress: () => void;
