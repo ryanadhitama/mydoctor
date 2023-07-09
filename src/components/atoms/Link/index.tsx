@@ -2,9 +2,9 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { colors, fonts } from '../../../utils';
 
-type LinkType = { title: string; size: number; align: string; onPress: () => void };
+type LinkType = { title: string; size: number; align?: string; onPress?: () => void };
 
-const Link = ({ title, size, align, onPress }: LinkType) => {
+const Link = ({ title, size, align = 'left', onPress }: LinkType) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <Text style={styles.text(size, align)}>{title}</Text>
