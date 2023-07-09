@@ -7,7 +7,7 @@ import DarkProfile from './DarkProfile';
 export type HeaderProps = {
   title?: string;
   photo?: any;
-  onPress: () => void;
+  onPress?: () => void;
   desc?: string;
 };
 

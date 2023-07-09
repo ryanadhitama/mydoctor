@@ -17,7 +17,11 @@ const Register = ({ navigation }: RegisterProps) => {
   });
 
   const onContinue = () => {
-    return;
+    navigation.navigate('UploadPhoto', {
+      name: 'Ryan',
+      position: 'Web Developer',
+      uid: '12345'
+    });
   };
 
   return (
