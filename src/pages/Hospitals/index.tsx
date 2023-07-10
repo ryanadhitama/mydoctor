@@ -40,7 +40,7 @@ const Hospitals = () => {
 export default Hospitals;
 
 const styles = StyleSheet.create({
-  page: { flex: 1 },
+  page: { flex: 1, backgroundColor: colors.white },
   background: { height: 240, paddingTop: 30 },
   title: {
     fontSize: 20,

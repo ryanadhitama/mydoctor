@@ -112,7 +112,8 @@ export default Doctor;
 
 const styles = StyleSheet.create({
   page: {
-    flex: 1
+    flex: 1,
+    backgroundColor: colors.white
   },
   content: {
     backgroundColor: colors.white,
