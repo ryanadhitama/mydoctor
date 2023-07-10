@@ -12,7 +12,9 @@ export type LoginProps = {
 const Login = ({ navigation }: LoginProps) => {
   const [form, setForm] = useForm({ email: '', password: '' });
 
-  const login = () => {};
+  const login = () => {
+    navigation.navigate('MainApp');
+  };
 
   return (
     <SafeAreaView style={styles.page}>
