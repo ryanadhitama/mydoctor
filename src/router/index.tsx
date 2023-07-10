@@ -1,6 +1,15 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Splash, GetStarted, Register, Login, UploadPhoto, Doctor, Hospitals } from '../pages';
+import {
+  Splash,
+  GetStarted,
+  Register,
+  Login,
+  UploadPhoto,
+  Doctor,
+  Hospitals,
+  UserProfile
+} from '../pages';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomNavigator } from '../components';
 
@@ -27,6 +36,7 @@ const Router = () => {
       <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
       <Stack.Screen name="UploadPhoto" component={UploadPhoto} options={{ headerShown: false }} />
       <Stack.Screen name="MainApp" component={MainApp} options={{ headerShown: false }} />
+      <Stack.Screen name="UserProfile" component={UserProfile} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 };

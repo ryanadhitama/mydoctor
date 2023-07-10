@@ -41,7 +41,13 @@ const Doctor = ({ navigation }: any) => {
                 profession: 'Product Designer',
                 photo: DummyDoctor2
               }}
-              onPress={() => navigation.navigate('UserProfile')}
+              onPress={() =>
+                navigation.navigate('UserProfile', {
+                  fullName: 'Shayna Melinda',
+                  profession: 'Product Designer',
+                  photo: DummyDoctor2
+                })
+              }
             />
             <Text style={styles.welcome}>Mau konsultasi dengan siapa hari ini?</Text>
           </View>
