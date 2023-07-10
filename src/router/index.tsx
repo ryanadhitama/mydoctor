@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Splash, GetStarted, Register, Login, UploadPhoto, Doctor } from '../pages';
+import { Splash, GetStarted, Register, Login, UploadPhoto, Doctor, Hospitals } from '../pages';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomNavigator } from '../components';
 
@@ -13,7 +13,7 @@ const MainApp = () => {
     <Tab.Navigator tabBar={(props) => <BottomNavigator {...props} />}>
       <Tab.Screen name="Doctor" component={Doctor} options={{ headerShown: false }} />
       <Tab.Screen name="Messages" component={Doctor} options={{ headerShown: false }} />
-      <Tab.Screen name="Hospitals" component={Doctor} options={{ headerShown: false }} />
+      <Tab.Screen name="Hospitals" component={Hospitals} options={{ headerShown: false }} />
     </Tab.Navigator>
   );
 };
