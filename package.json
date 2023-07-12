@@ -11,6 +11,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.12.1",
     "@react-navigation/bottom-tabs": "^6.5.8",
     "@react-navigation/native": "^6.1.7",
     "@react-navigation/stack": "^6.3.17",
