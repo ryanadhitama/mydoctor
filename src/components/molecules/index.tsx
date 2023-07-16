@@ -9,4 +9,5 @@ export { default as ListHospital } from './ListHospital';
 export { default as Loading } from './Loading';
 export { default as NewsItem } from './NewsItem';
 export { default as Profile } from './Profile';
+export { default as ProfileItem } from './ProfileItem';
 export { default as RatedDoctor } from './RatedDoctor';
