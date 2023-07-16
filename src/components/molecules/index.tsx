@@ -6,6 +6,7 @@ export { default as HomeProfile } from './HomeProfile';
 export { default as InputChat } from './InputChat';
 export { default as List } from './List';
 export { default as ListHospital } from './ListHospital';
+export { default as Loading } from './Loading';
 export { default as NewsItem } from './NewsItem';
 export { default as Profile } from './Profile';
 export { default as RatedDoctor } from './RatedDoctor';
