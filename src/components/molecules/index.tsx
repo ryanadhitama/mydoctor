@@ -3,6 +3,7 @@ export { default as ChatItem } from './ChatItem';
 export { default as DoctorCategory } from './DoctorCategory';
 export { default as Header } from './Header';
 export { default as HomeProfile } from './HomeProfile';
+export { default as InputChat } from './InputChat';
 export { default as List } from './List';
 export { default as ListHospital } from './ListHospital';
 export { default as NewsItem } from './NewsItem';
