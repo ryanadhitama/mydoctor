@@ -2,13 +2,16 @@ import React from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button, Gap, Header, Input } from '../../components';
-import { colors, useForm } from '../../utils';
+import { colors, showError, storeData, useForm } from '../../utils';
+import { useDispatch } from 'react-redux';
+import { app, auth } from '../../config/Fire';
 
 export type RegisterProps = {
   navigation: any;
 };
 
 const Register = ({ navigation }: RegisterProps) => {
+  const dispatch = useDispatch();
   const [form, setForm] = useForm({
     fullName: '',
     profession: '',
@@ -17,11 +20,31 @@ const Register = ({ navigation }: RegisterProps) => {
   });
 
   const onContinue = () => {
-    navigation.navigate('UploadPhoto', {
-      name: 'Ryan',
-      position: 'Web Developer',
-      uid: '12345'
-    });
+    dispatch({ type: 'SET_LOADING', value: true });
+    auth
+      .createUserWithEmailAndPassword(form.email, form.password)
+      .then((success: any) => {
+        dispatch({ type: 'SET_LOADING', value: false });
+        setForm('reset');
+        const data = {
+          fullName: form.fullName,
+          profession: form.profession,
+          email: form.email,
+          uid: success.user.uid
+        };
+
+        app
+          .database()
+          .ref('users/' + success.user.uid + '/')
+          .set(data);
+
+        storeData('user', data);
+        navigation.navigate('UploadPhoto', data);
+      })
+      .catch((err: any) => {
+        dispatch({ type: 'SET_LOADING', value: false });
+        showError(err.message);
+      });
   };
 
   return (
