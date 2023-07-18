@@ -4,7 +4,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button, Gap, Header, Input } from '../../components';
 import { colors, showError, storeData, useForm } from '../../utils';
 import { useDispatch } from 'react-redux';
-import { app, auth } from '../../config/Fire';
+import { auth, db } from '../../config/Fire';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { push, ref } from 'firebase/database';
 
 export type RegisterProps = {
   navigation: any;
@@ -19,32 +21,27 @@ const Register = ({ navigation }: RegisterProps) => {
     password: ''
   });
 
-  const onContinue = () => {
+  const onContinue = async () => {
     dispatch({ type: 'SET_LOADING', value: true });
-    auth
-      .createUserWithEmailAndPassword(form.email, form.password)
-      .then((success: any) => {
-        dispatch({ type: 'SET_LOADING', value: false });
-        setForm('reset');
-        const data = {
-          fullName: form.fullName,
-          profession: form.profession,
-          email: form.email,
-          uid: success.user.uid
-        };
 
-        app
-          .database()
-          .ref('users/' + success.user.uid + '/')
-          .set(data);
-
-        storeData('user', data);
-        navigation.navigate('UploadPhoto', data);
-      })
-      .catch((err: any) => {
-        dispatch({ type: 'SET_LOADING', value: false });
-        showError(err.message);
-      });
+    try {
+      const credential = await createUserWithEmailAndPassword(auth, form.email, form.password);
+      dispatch({ type: 'SET_LOADING', value: false });
+      setForm('reset');
+      const data = {
+        fullName: form.fullName,
+        profession: form.profession,
+        email: form.email,
+        uid: credential.user.uid
+      };
+      push(ref(db, 'users/' + credential.user.uid + '/'), data);
+      storeData('user', data);
+      navigation.navigate('UploadPhoto', data);
+    } catch (error: any) {
+      showError(error.message);
+    } finally {
+      dispatch({ type: 'SET_LOADING', value: false });
+    }
   };
 
   return (

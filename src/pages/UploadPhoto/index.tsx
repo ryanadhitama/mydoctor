@@ -56,7 +56,7 @@ const UploadPhoto = ({ navigation, route }: UploadPhotoProps) => {
             align="center"
             size={16}
             onPress={() => {
-              return false;
+              navigation.navigate('MainApp');
             }}
           />
         </View>
