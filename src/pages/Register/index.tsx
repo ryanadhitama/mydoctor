@@ -6,7 +6,7 @@ import { colors, showError, storeData, useForm } from '../../utils';
 import { useDispatch } from 'react-redux';
 import { auth, db } from '../../config/Fire';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { push, ref } from 'firebase/database';
+import { ref, set } from 'firebase/database';
 
 export type RegisterProps = {
   navigation: any;
@@ -26,7 +26,6 @@ const Register = ({ navigation }: RegisterProps) => {
 
     try {
       const credential = await createUserWithEmailAndPassword(auth, form.email, form.password);
-      dispatch({ type: 'SET_LOADING', value: false });
       setForm('reset');
       const data = {
         fullName: form.fullName,
@@ -34,7 +33,7 @@ const Register = ({ navigation }: RegisterProps) => {
         email: form.email,
         uid: credential.user.uid
       };
-      push(ref(db, 'users/' + credential.user.uid + '/'), data);
+      set(ref(db, 'users/' + credential.user.uid), data);
       storeData('user', data);
       navigation.navigate('UploadPhoto', data);
     } catch (error: any) {

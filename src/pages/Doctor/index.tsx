@@ -49,6 +49,16 @@ const Doctor = ({ navigation }: any) => {
               profile={profile}
               onPress={() => navigation.navigate('UserProfile', profile)}
             />
+            {/* <HomeProfile
+              profile={profile}
+              onPress={() =>
+                navigation.navigate('UserProfile', {
+                  fullName: 'Shayna Melinda',
+                  profession: 'Product Designer',
+                  photo: DummyDoctor2
+                })
+              }
+            /> */}
             <Text style={styles.welcome}>Mau konsultasi dengan siapa hari ini?</Text>
           </View>
           <View style={styles.wrapperScroll}>
