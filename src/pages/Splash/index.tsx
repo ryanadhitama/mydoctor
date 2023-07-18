@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { ILLogo } from '../../assets';
 import { colors, fonts } from '../../utils';
+import { auth } from '../../config/Fire';
 
 export type SplashProps = {
   navigation: any;
@@ -9,9 +10,17 @@ export type SplashProps = {
 
 const Splash = ({ navigation }: SplashProps) => {
   useEffect(() => {
-    setTimeout(() => {
-      navigation.replace('GetStarted');
-    }, 2000);
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setTimeout(() => {
+        if (user) {
+          navigation.replace('MainApp');
+        } else {
+          navigation.replace('GetStarted');
+        }
+      }, 3000);
+    });
+
+    return () => unsubscribe();
   }, [navigation]);
 
   return (
