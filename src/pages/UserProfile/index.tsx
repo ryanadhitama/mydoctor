@@ -2,12 +2,21 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Gap, Header, List, Profile } from '../../components';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { auth } from '../../config/Fire';
+import { showError } from '../../utils';
 
 const UserProfile = ({ navigation, route }: any) => {
   const profile = route.params;
 
   const signOut = () => {
-    return false;
+    auth
+      .signOut()
+      .then(() => {
+        navigation.replace('GetStarted');
+      })
+      .catch((err) => {
+        showError(err.message);
+      });
   };
   return (
     <SafeAreaView style={styles.page}>

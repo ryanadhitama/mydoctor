@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { DoctorCategory, Gap, HomeProfile, NewsItem, RatedDoctor } from '../../components';
 // import { Fire } from '../../config';
-import { colors, fonts } from '../../utils';
+import { colors, fonts, getData } from '../../utils';
 import {
   DummyDoctor1,
   DummyDoctor2,
@@ -25,29 +25,29 @@ const Doctor = ({ navigation }: any) => {
     profession: ''
   });
 
+  const getUserData = () => {
+    getData('user').then((res) => {
+      const data = res;
+      data.photo = res?.photo?.length > 1 ? { uri: res.photo } : ILNullPhoto;
+      setProfile(res);
+    });
+  };
+
+  useEffect(() => {
+    navigation.addListener('focus', () => {
+      getUserData();
+    });
+  }, [navigation]);
+
   return (
     <SafeAreaView style={styles.page} edges={['top']}>
       <View style={styles.content}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.wrapperSection}>
             <Gap height={30} />
-            {/* <HomeProfile
+            <HomeProfile
               profile={profile}
               onPress={() => navigation.navigate('UserProfile', profile)}
-            /> */}
-            <HomeProfile
-              profile={{
-                fullName: 'Shayna Melinda',
-                profession: 'Product Designer',
-                photo: DummyDoctor2
-              }}
-              onPress={() =>
-                navigation.navigate('UserProfile', {
-                  fullName: 'Shayna Melinda',
-                  profession: 'Product Designer',
-                  photo: DummyDoctor2
-                })
-              }
             />
             <Text style={styles.welcome}>Mau konsultasi dengan siapa hari ini?</Text>
           </View>
