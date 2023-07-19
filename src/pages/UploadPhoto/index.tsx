@@ -1,11 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import { Alert, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import ImagePicker from 'react-native-image-picker';
+import * as ImagePicker from 'react-native-image-picker';
 import { IconAddPhoto, IconRemovePhoto, ILNullPhoto } from '../../assets';
 import { Button, Gap, Header, Link } from '../../components';
-import { colors, fonts } from '../../utils';
+import { colors, fonts, showError, storeData } from '../../utils';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { ref, set, update } from 'firebase/database';
+import { UploadFolder, db, uploadFile } from '../../config/Fire';
 
 export type UploadPhotoProps = {
   navigation: any;
@@ -14,6 +16,7 @@ export type UploadPhotoProps = {
       fullName: string;
       profession: string;
       uid: string;
+      photo?: string;
     };
   };
 };
@@ -24,11 +27,35 @@ const UploadPhoto = ({ navigation, route }: UploadPhotoProps) => {
   const [hasPhoto, setHasPhoto] = useState(false);
   const [photo, setPhoto] = useState(ILNullPhoto);
   const getImage = () => {
-    return false;
+    ImagePicker.launchImageLibrary(
+      {
+        quality: 1,
+        maxWidth: 200,
+        maxHeight: 200,
+        mediaType: 'photo'
+      },
+      async (response: any) => {
+        if (response.didCancel || response.error) {
+          showError('Oops, pilih foto terlebih dahulu');
+        } else {
+          const source = { uri: response.assets[0].uri };
+          setPhoto(source);
+          setHasPhoto(true);
+          const res = await uploadFile(response?.assets[0]?.uri, UploadFolder.USER);
+          setPhotoForDB(res?.url);
+        }
+      }
+    );
   };
 
   const uploadAndContinue = () => {
-    return false;
+    update(ref(db, 'users/' + uid), { photo: photoForDB });
+    const data = route.params;
+    data.photo = photoForDB;
+
+    storeData('user', data);
+
+    navigation.replace('MainApp');
   };
   return (
     <SafeAreaView style={styles.page}>
