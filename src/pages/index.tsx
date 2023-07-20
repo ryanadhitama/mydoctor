@@ -6,3 +6,4 @@ export { default as Register } from './Register';
 export { default as Splash } from './Splash';
 export { default as UploadPhoto } from './UploadPhoto';
 export { default as UserProfile } from './UserProfile';
+export { default as UpdateProfile } from './UpdateProfile';

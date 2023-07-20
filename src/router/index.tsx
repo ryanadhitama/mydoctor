@@ -8,7 +8,8 @@ import {
   UploadPhoto,
   Doctor,
   Hospitals,
-  UserProfile
+  UserProfile,
+  UpdateProfile
 } from '../pages';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomNavigator } from '../components';
@@ -37,6 +38,11 @@ const Router = () => {
       <Stack.Screen name="UploadPhoto" component={UploadPhoto} options={{ headerShown: false }} />
       <Stack.Screen name="MainApp" component={MainApp} options={{ headerShown: false }} />
       <Stack.Screen name="UserProfile" component={UserProfile} options={{ headerShown: false }} />
+      <Stack.Screen
+        name="UpdateProfile"
+        component={UpdateProfile}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 };

@@ -4,6 +4,7 @@ import Router from './router';
 import { Provider, useSelector } from 'react-redux';
 import store from './redux/store';
 import { Loading } from './components';
+import FlashMessage from 'react-native-flash-message';
 
 const MainApp = () => {
   const stateGlobal = useSelector((state) => state);
@@ -12,6 +13,7 @@ const MainApp = () => {
       <NavigationContainer>
         <Router />
       </NavigationContainer>
+      <FlashMessage position="top" />
       {stateGlobal?.loading && <Loading />}
     </>
   );
