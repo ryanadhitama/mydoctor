@@ -14,6 +14,8 @@ import {
   ILNullPhoto
 } from '../../assets';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { onValue, ref } from 'firebase/database';
+import { db } from '../../config/Fire';
 
 const Doctor = ({ navigation }: any) => {
   const [news, setNews] = useState([]);
@@ -34,10 +36,21 @@ const Doctor = ({ navigation }: any) => {
   };
 
   useEffect(() => {
+    getNews();
     navigation.addListener('focus', () => {
       getUserData();
     });
   }, [navigation]);
+
+  const getNews = () => {
+    onValue(ref(db, 'news/'), (res) => {
+      if (res.val()) {
+        const data = res.val();
+        const filterData = data.filter((el: any) => el !== null);
+        setNews(filterData);
+      }
+    });
+  };
 
   return (
     <SafeAreaView style={styles.page} edges={['top']}>
@@ -95,22 +108,11 @@ const Doctor = ({ navigation }: any) => {
             />
             <Text style={styles.sectionLabel}>Good News</Text>
           </View>
-          <NewsItem
-            title="Is it safe to stay at home
-                during coronavirus?"
-            date="Today"
-            image={DummyNews1}
-          />
-          <NewsItem
-            title="Consume yellow citrus helps you healthier"
-            date="Today"
-            image={DummyNews2}
-          />
-          <NewsItem
-            title="Learn how to make a proper orange juice at home"
-            date="Today"
-            image={DummyNews3}
-          />
+          {news.map((item: any, i: number) => {
+            return (
+              <NewsItem key={`news-${i}`} title={item.title} date={item.date} image={item.image} />
+            );
+          })}
           <Gap height={30} />
         </ScrollView>
       </View>
