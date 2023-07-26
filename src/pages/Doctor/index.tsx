@@ -36,6 +36,7 @@ const Doctor = ({ navigation }: any) => {
   };
 
   useEffect(() => {
+    getCategoryDoctor();
     getNews();
     navigation.addListener('focus', () => {
       getUserData();
@@ -52,6 +53,16 @@ const Doctor = ({ navigation }: any) => {
     });
   };
 
+  const getCategoryDoctor = () => {
+    onValue(ref(db, 'category_doctor/'), (res) => {
+      if (res.val()) {
+        const data = res.val();
+        const filterData = data.filter((el: any) => el !== null);
+        setCategoryDoctor(filterData);
+      }
+    });
+  };
+
   return (
     <SafeAreaView style={styles.page} edges={['top']}>
       <View style={styles.content}>
@@ -62,26 +73,21 @@ const Doctor = ({ navigation }: any) => {
               profile={profile}
               onPress={() => navigation.navigate('UserProfile', profile)}
             />
-            {/* <HomeProfile
-              profile={profile}
-              onPress={() =>
-                navigation.navigate('UserProfile', {
-                  fullName: 'Shayna Melinda',
-                  profession: 'Product Designer',
-                  photo: DummyDoctor2
-                })
-              }
-            /> */}
             <Text style={styles.welcome}>Mau konsultasi dengan siapa hari ini?</Text>
           </View>
           <View style={styles.wrapperScroll}>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
               <View style={styles.category}>
                 <Gap width={32} />
-                <DoctorCategory category="dokter umum" onPress={() => {}} />
-                <DoctorCategory category="psikiater" onPress={() => {}} />
-                <DoctorCategory category="dokter obat" onPress={() => {}} />
-                <DoctorCategory category="dokter umum" onPress={() => {}} />
+                {categoryDoctor.map((item: any, i: number) => {
+                  return (
+                    <DoctorCategory
+                      key={`category-${i}`}
+                      category={item.category}
+                      onPress={() => navigation.navigate('ChooseDoctor', item)}
+                    />
+                  );
+                })}
                 <Gap width={22} />
               </View>
             </ScrollView>
