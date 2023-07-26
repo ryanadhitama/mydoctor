@@ -8,7 +8,7 @@ const DarkProfile = ({ onPress, title, desc, photo }: HeaderProps) => {
   return (
     <View style={styles.container}>
       <Button type="icon-only" icon="back-light" onPress={onPress} />
-      <View style={styles.contet}>
+      <View style={styles.content}>
         <Text style={styles.name}>{title}</Text>
         <Text style={styles.desc}>{desc}</Text>
       </View>
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center'
   },
-  contet: { flex: 1 },
+  content: { flex: 1 },
   avatar: { width: 46, height: 46, borderRadius: 46 / 2 },
   name: {
     fontSize: 20,

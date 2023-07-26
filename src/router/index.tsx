@@ -10,7 +10,8 @@ import {
   Hospitals,
   UserProfile,
   UpdateProfile,
-  DoctorProfile
+  DoctorProfile,
+  Chatting
 } from '../pages';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomNavigator } from '../components';
@@ -49,6 +50,7 @@ const Router = () => {
         component={DoctorProfile}
         options={{ headerShown: false }}
       />
+      <Stack.Screen name="Chatting" component={Chatting} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 };

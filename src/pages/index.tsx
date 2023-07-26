@@ -8,3 +8,4 @@ export { default as UpdateProfile } from './UpdateProfile';
 export { default as UploadPhoto } from './UploadPhoto';
 export { default as UserProfile } from './UserProfile';
 export { default as DoctorProfile } from './DoctorProfile';
+export { default as Chatting } from './Chatting';
