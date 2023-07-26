@@ -1,10 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { DoctorCategory, Gap, HomeProfile, NewsItem, RatedDoctor } from '../../components';
-// import { Fire } from '../../config';
 import { colors, fonts, getData } from '../../utils';
-import { DummyDoctor1, DummyDoctor2, DummyDoctor3, ILNullPhoto } from '../../assets';
+import { ILNullPhoto } from '../../assets';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { onValue, ref } from 'firebase/database';
 import { db } from '../../config/Fire';
@@ -29,6 +27,7 @@ const Doctor = ({ navigation }: any) => {
 
   useEffect(() => {
     getCategoryDoctor();
+    getTopRatedDoctors();
     getNews();
     navigation.addListener('focus', () => {
       getUserData();
@@ -41,6 +40,16 @@ const Doctor = ({ navigation }: any) => {
         const data = res.val();
         const filterData = data.filter((el: any) => el !== null);
         setNews(filterData);
+      }
+    });
+  };
+
+  const getTopRatedDoctors = () => {
+    onValue(ref(db, 'doctors/'), (res) => {
+      if (res.val()) {
+        const data = res.val();
+        const filterData = data.filter((el: any) => el !== null);
+        setDoctors(filterData);
       }
     });
   };
@@ -86,24 +95,17 @@ const Doctor = ({ navigation }: any) => {
           </View>
           <View style={styles.wrapperSection}>
             <Text style={styles.sectionLabel}>Top Rated Doctors</Text>
-            <RatedDoctor
-              name="Alexa Rachel"
-              desc="Pediatrician"
-              avatar={DummyDoctor1}
-              onPress={() => navigation.navigate('DoctorProfile')}
-            />
-            <RatedDoctor
-              name="Sunny Frank"
-              desc="Dentist"
-              avatar={DummyDoctor2}
-              onPress={() => navigation.navigate('DoctorProfile')}
-            />
-            <RatedDoctor
-              name="Poe Minn"
-              desc="Podiatrist"
-              avatar={DummyDoctor3}
-              onPress={() => navigation.navigate('DoctorProfile')}
-            />
+            {doctors.map((doctor: any) => {
+              return (
+                <RatedDoctor
+                  key={doctor.id}
+                  name={doctor.data?.fullName}
+                  desc={doctor.data?.profession}
+                  avatar={{ uri: doctor.data?.photo }}
+                  onPress={() => navigation.navigate('DoctorProfile', doctor)}
+                />
+              );
+            })}
             <Text style={styles.sectionLabel}>Good News</Text>
           </View>
           {news.map((item: any, i: number) => {
