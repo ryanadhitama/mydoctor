@@ -4,15 +4,7 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { DoctorCategory, Gap, HomeProfile, NewsItem, RatedDoctor } from '../../components';
 // import { Fire } from '../../config';
 import { colors, fonts, getData } from '../../utils';
-import {
-  DummyDoctor1,
-  DummyDoctor2,
-  DummyDoctor3,
-  DummyNews1,
-  DummyNews2,
-  DummyNews3,
-  ILNullPhoto
-} from '../../assets';
+import { DummyDoctor1, DummyDoctor2, DummyDoctor3, ILNullPhoto } from '../../assets';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { onValue, ref } from 'firebase/database';
 import { db } from '../../config/Fire';
