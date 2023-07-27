@@ -11,7 +11,8 @@ import {
   UserProfile,
   UpdateProfile,
   DoctorProfile,
-  Chatting
+  Chatting,
+  Messages
 } from '../pages';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomNavigator } from '../components';
@@ -24,7 +25,7 @@ const MainApp = () => {
     // eslint-disable-next-line react/no-unstable-nested-components
     <Tab.Navigator tabBar={(props) => <BottomNavigator {...props} />}>
       <Tab.Screen name="Doctor" component={Doctor} options={{ headerShown: false }} />
-      <Tab.Screen name="Messages" component={Doctor} options={{ headerShown: false }} />
+      <Tab.Screen name="Messages" component={Messages} options={{ headerShown: false }} />
       <Tab.Screen name="Hospitals" component={Hospitals} options={{ headerShown: false }} />
     </Tab.Navigator>
   );
