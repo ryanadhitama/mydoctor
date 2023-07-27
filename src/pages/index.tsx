@@ -10,3 +10,4 @@ export { default as UserProfile } from './UserProfile';
 export { default as DoctorProfile } from './DoctorProfile';
 export { default as Chatting } from './Chatting';
 export { default as Messages } from './Messages';
+export { default as ChooseDoctor } from './ChooseDoctor';
