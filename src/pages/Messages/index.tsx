@@ -17,28 +17,31 @@ const Messages = ({ navigation }: any) => {
   const [historyChat, setHistoryChat] = useState([]);
 
   useEffect(() => {
-    getDataUserFromLocal();
-    const urlHistory = `messages/${user.uid}/`;
-    onValue(ref(db, urlHistory), async (snapshot) => {
-      if (snapshot.val()) {
-        const oldData = snapshot.val();
-        const data: any = [];
-        const promises = await Object.keys(oldData).map(async (key) => {
-          const urlUidDoctor = `doctors/${oldData[key].uidPartner}`;
-          onValue(ref(db, urlUidDoctor), async (s) => {
-            if (s.val()) {
-              data.push({
-                id: key,
-                detailDoctor: s.val()?.data,
-                ...oldData[key]
-              });
-            }
+    navigation.addListener('focus', () => {
+      getDataUserFromLocal();
+      const urlHistory = `messages/${user.uid}/`;
+      onValue(ref(db, urlHistory), async (snapshot) => {
+        if (snapshot.val()) {
+          const oldData = snapshot.val();
+          const data: any = [];
+          const promises = await Object.keys(oldData).map(async (key) => {
+            const urlUidDoctor = `doctors/${oldData[key].uidPartner}`;
+            onValue(ref(db, urlUidDoctor), async (s) => {
+              if (s.val()) {
+                data.push({
+                  id: key,
+                  detailDoctor: s.val()?.data,
+                  ...oldData[key]
+                });
+              }
+            });
           });
-        });
-        await Promise.all(promises);
-        setHistoryChat(data);
-      }
+          await Promise.all(promises);
+          setHistoryChat(data);
+        }
+      });
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user.uid]);
 
   const getDataUserFromLocal = () => {
