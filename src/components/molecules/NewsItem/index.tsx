@@ -2,7 +2,13 @@ import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { colors, fonts } from '../../../utils';
 
-const NewsItem = ({ title, date, image }: any) => {
+export type NewsItemType = {
+  title?: string;
+  date?: string;
+  image: string;
+};
+
+const NewsItem = ({ title, date, image }: NewsItemType) => {
   return (
     <View style={styles.container}>
       <View style={styles.titleWrapper}>
