@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, TextInput, View } from 'react-native';
-import { colors, fonts } from '../../../utils';
+import { colors, fonts } from '@utils';
 import { Button } from '../../atoms';
 
 const InputChat = ({ value, onChangeText, onButtonPress, targetChat }: any) => {

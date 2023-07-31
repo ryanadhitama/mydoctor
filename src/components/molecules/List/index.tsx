@@ -1,9 +1,20 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import { colors, fonts } from '../../../utils';
-import { IconNext, IconEditProfile, IconLanguage, IconRate, IconHelp } from '../../../assets';
+import { colors, fonts } from '@utils';
+import { IconNext, IconEditProfile, IconLanguage, IconRate, IconHelp } from '@assets';
 
-const List = ({ profile, name, desc, type, onPress, icon }: any) => {
+export type ListType = {
+  type?: string;
+  name?: string;
+  desc?: string;
+  onPress?: () => void;
+  icon?: string;
+  profile: {
+    uri: string;
+  };
+};
+
+const List = ({ profile, name, desc, type, onPress, icon }: ListType) => {
   // eslint-disable-next-line react/no-unstable-nested-components
   const Icon = () => {
     if (icon === 'edit-profile') {
