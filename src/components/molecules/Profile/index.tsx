@@ -3,7 +3,17 @@ import { Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { IconRemovePhoto } from '../../../assets';
 import { colors, fonts } from '../../../utils';
 
-const Profile = ({ name, desc, isRemove, photo, onPress }: any) => {
+export type ProfileType = {
+  name?: string;
+  desc?: string;
+  isRemove?: boolean;
+  photo: {
+    uri?: string;
+  };
+  onPress?: () => void;
+};
+
+const Profile = ({ name, desc, isRemove, photo, onPress }: ProfileType) => {
   return (
     <View style={styles.container}>
       {!isRemove && (

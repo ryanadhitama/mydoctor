@@ -7,7 +7,7 @@ interface IGap {
 }
 
 const Gap = ({ width, height }: IGap) => {
-  return <View style={{ width: width, height: height }}></View>;
+  return <View style={{ width: width, height: height }} />;
 };
 
 export default Gap;

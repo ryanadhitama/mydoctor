@@ -1,4 +1,3 @@
-/* eslint-disable comma-dangle */
 const mainColors = {
   green1: '#0BCAD4',
   green2: '#EDFCFD',

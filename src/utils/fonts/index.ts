@@ -1,4 +1,3 @@
-/* eslint-disable comma-dangle */
 export const fonts = {
   primary: {
     200: 'Nunito-ExtraLight',
