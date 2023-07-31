@@ -13,12 +13,6 @@ const reducer = (state = initialState, action: any) => {
       loading: action.value
     };
   }
-  if (action.type === 'SET_NAME') {
-    return {
-      ...state,
-      name: 'Azzamy'
-    };
-  }
   return state;
 };
 

@@ -1,8 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { colors, fonts } from '../../../utils';
+import { colors, fonts } from '@utils';
 
-const ProfileItem = ({ label, value }: any) => {
+export type ProfileItemType = {
+  label: string;
+  value?: string;
+};
+
+const ProfileItem = ({ label, value }: ProfileItemType) => {
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import { Alert, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import * as ImagePicker from 'react-native-image-picker';
@@ -6,22 +5,10 @@ import { IconAddPhoto, IconRemovePhoto, ILNullPhoto } from '../../assets';
 import { Button, Gap, Header, Link } from '../../components';
 import { colors, fonts, showError, storeData } from '../../utils';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { ref, set, update } from 'firebase/database';
+import { ref, update } from 'firebase/database';
 import { UploadFolder, db, uploadFile } from '../../config/Fire';
 
-export type UploadPhotoProps = {
-  navigation: any;
-  route: {
-    params: {
-      fullName: string;
-      profession: string;
-      uid: string;
-      photo?: string;
-    };
-  };
-};
-
-const UploadPhoto = ({ navigation, route }: UploadPhotoProps) => {
+const UploadPhoto = ({ navigation, route }: any) => {
   const { fullName, profession, uid } = route.params;
   const [photoForDB, setPhotoForDB] = useState('');
   const [hasPhoto, setHasPhoto] = useState(false);

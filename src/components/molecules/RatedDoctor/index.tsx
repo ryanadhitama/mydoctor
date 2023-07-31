@@ -1,9 +1,18 @@
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { IconStar } from '../../../assets';
-import { colors, fonts } from '../../../utils';
+import { IconStar } from '@assets';
+import { colors, fonts } from '@utils';
 
-const RatedDoctor = ({ name, desc, avatar, onPress }: any) => {
+export type RatedDoctorType = {
+  name: string;
+  desc: string;
+  avatar: {
+    uri: string;
+  };
+  onPress: () => void;
+};
+
+const RatedDoctor = ({ name, desc, avatar, onPress }: RatedDoctorType) => {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <Image source={avatar} style={styles.avatar} />

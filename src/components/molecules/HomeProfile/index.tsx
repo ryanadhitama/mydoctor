@@ -22,13 +22,11 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 16,
     fontFamily: fonts.primary[600],
-    color: colors.text.primary,
-    textTransform: 'capitalize'
+    color: colors.text.primary
   },
   profession: {
     fontSize: 12,
     fontFamily: fonts.primary[400],
-    color: colors.text.secondary,
-    textTransform: 'capitalize'
+    color: colors.text.secondary
   }
 });

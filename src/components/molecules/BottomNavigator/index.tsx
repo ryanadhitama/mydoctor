@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 import { colors } from '../../../utils';
 import { TabItem } from '../../atoms';
 
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 53,
     paddingTop: 12,
-    paddingBottom: 12,
+    paddingBottom: Platform.OS === 'ios' ? 30 : 12,
     backgroundColor: colors.secondary
   }
 });
