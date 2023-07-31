@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import { IconRemovePhoto } from '../../../assets';
-import { colors, fonts } from '../../../utils';
+import { IconRemovePhoto } from '@assets';
+import { colors, fonts } from '@utils';
 
 export type ProfileType = {
   name?: string;

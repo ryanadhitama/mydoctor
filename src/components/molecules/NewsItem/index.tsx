@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
-import { colors, fonts } from '../../../utils';
+import { colors, fonts } from '@utils';
 
 export type NewsItemType = {
   title?: string;

@@ -1,8 +1,17 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
-import { colors, fonts } from '../../../utils';
+import { colors, fonts } from '@utils';
 
-const ListHospital = ({ type, name, address, pic }: any) => {
+export type ListHospitalType = {
+  type?: string;
+  name?: string;
+  address: string;
+  pic: {
+    uri: string;
+  };
+};
+
+const ListHospital = ({ type, name, address, pic }: ListHospitalType) => {
   return (
     <View style={styles.container}>
       <Image source={pic} style={styles.picture} />
