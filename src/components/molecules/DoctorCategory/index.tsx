@@ -3,7 +3,12 @@ import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { ILCatUmum, ILCatPsikiater, ILCatObat } from '../../../assets';
 import { colors, fonts } from '../../../utils';
 
-const DoctorCategory = ({ category, onPress }: any) => {
+type DoctorCategoryType = {
+  category: string;
+  onPress: () => void;
+};
+
+const DoctorCategory = ({ category, onPress }: DoctorCategoryType) => {
   // eslint-disable-next-line react/no-unstable-nested-components
   const Icon = () => {
     if (category === 'dokter obatmum') {
