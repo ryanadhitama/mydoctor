@@ -2,7 +2,15 @@ import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { colors, fonts } from '../../../utils';
 
-const Other = ({ text, date, photo }: any) => {
+type OtherType = {
+  text: string;
+  date: string;
+  photo: {
+    uri: string;
+  };
+};
+
+const Other = ({ text, date, photo }: OtherType) => {
   return (
     <View style={styles.container}>
       <Image source={photo} style={styles.avatar} />

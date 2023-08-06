@@ -2,7 +2,12 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { colors, fonts } from '../../../utils';
 
-const IsMe = ({ text, date }: any) => {
+type IsMeType = {
+  text: string;
+  date: string;
+};
+
+const IsMe = ({ text, date }: IsMeType) => {
   return (
     <View style={styles.container}>
       <View style={styles.chatContent}>
