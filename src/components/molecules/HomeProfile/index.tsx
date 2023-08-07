@@ -2,7 +2,12 @@ import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { colors, fonts } from '../../../utils';
 
-const HomeProfile = ({ onPress, profile }: any) => {
+type HomeProfileProps = {
+  profile?: any;
+  onPress?: () => void;
+};
+
+const HomeProfile = ({ onPress, profile }: HomeProfileProps) => {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <Image source={profile.photo} style={styles.avatar} />
