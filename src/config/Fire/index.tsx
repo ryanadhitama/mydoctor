@@ -44,8 +44,6 @@ export const uploadFile = async (
 
     const fileRef = ref(storage, replacePath || `${folder}${filename}.${uri.split('.').pop()}`);
 
-    // Why are we using XMLHttpRequest? See:
-    // https://github.com/expo/expo/issues/2402#issuecomment-443726662
     const blob: any = await new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       xhr.onload = function () {
