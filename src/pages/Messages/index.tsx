@@ -19,6 +19,11 @@ const Messages = ({ navigation }: any) => {
   useEffect(() => {
     navigation.addListener('focus', () => {
       getDataUserFromLocal();
+    });
+  }, []);
+
+  useEffect(() => {
+    navigation.addListener('focus', () => {
       const urlHistory = `messages/${user.uid}/`;
       onValue(ref(db, urlHistory), async (snapshot) => {
         if (snapshot.val()) {
@@ -49,6 +54,7 @@ const Messages = ({ navigation }: any) => {
       setUser(res);
     });
   };
+
   return (
     <SafeAreaView style={styles.page}>
       <View style={styles.content}>
