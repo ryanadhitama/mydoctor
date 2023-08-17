@@ -3,7 +3,7 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 import * as ImagePicker from 'react-native-image-picker';
 import { ILNullPhoto } from '../../assets';
 import { Button, Gap, Header, Input, Profile } from '../../components';
-import { colors, getData, showError, storeData } from '../../utils';
+import { colors, getData, showError, showSuccess, storeData } from '../../utils';
 import { UploadFolder, auth, db, uploadFile } from '../../config/Fire';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ref, set } from 'firebase/database';
@@ -47,6 +47,7 @@ const UpdateProfile = ({ navigation }: any) => {
       } else {
         await updateProfileData();
       }
+      showSuccess('Berhasil update profile');
     } catch (error) {
     } finally {
       dispatch({ type: 'SET_LOADING', value: false });

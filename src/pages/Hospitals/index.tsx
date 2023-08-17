@@ -1,12 +1,31 @@
+import { DummyHospital1, DummyHospital2, DummyHospital3, ILHospitalBG } from '@assets';
+import { ListHospital } from '@components';
+import { colors, fonts } from '@utils';
 import React from 'react';
-import { StyleSheet, Text, View, ImageBackground } from 'react-native';
-import { ILHospitalBG } from '../../assets/illustration';
-import { fonts, colors } from '../../utils';
-import { ListHospital } from '../../components';
-import { DummyHospital1, DummyHospital2, DummyHospital3 } from '../../assets';
+import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Hospitals = () => {
+  const items = [
+    {
+      type: 'Rumah Sakit',
+      name: 'Citra Bunga Merdeka',
+      address: 'Jln. Surya Sejahtera 20',
+      image: DummyHospital1
+    },
+    {
+      type: 'Rumah Sakit Anak',
+      name: 'Happy Family Kids',
+      address: 'Jln. Surya Sejahtera 20',
+      image: DummyHospital2
+    },
+    {
+      type: 'Rumah Sakit Jiwa',
+      name: 'Tingkatan Paling Atas',
+      address: 'Jln. Surya Sejahtera 20',
+      image: DummyHospital3
+    }
+  ];
   return (
     <SafeAreaView style={styles.page} edges={['top']}>
       <ImageBackground source={ILHospitalBG} style={styles.background}>
@@ -14,24 +33,15 @@ const Hospitals = () => {
         <Text style={styles.desc}>3 tersedia</Text>
       </ImageBackground>
       <View style={styles.content}>
-        <ListHospital
-          type="Rumah Sakit"
-          name="Citra Bunga Merdeka"
-          address="Jln. Surya Sejahtera 20"
-          pic={DummyHospital1}
-        />
-        <ListHospital
-          type="Rumah Sakit Anak"
-          name="Happy Family Kids"
-          address="Jln. Surya Sejahtera 20"
-          pic={DummyHospital2}
-        />
-        <ListHospital
-          type="Rumah Sakit Jiwa"
-          name="Tingkatan Paling Atas"
-          address="Jln. Surya Sejahtera 20"
-          pic={DummyHospital3}
-        />
+        {items?.map((item: any, i: number) => (
+          <ListHospital
+            type={item?.type}
+            name={item?.name}
+            address={item?.address}
+            pic={item?.image}
+            key={`lh-${i}`}
+          />
+        ))}
       </View>
     </SafeAreaView>
   );

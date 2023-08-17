@@ -16,10 +16,32 @@ import {
   ChooseDoctor
 } from '../pages';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { BottomNavigator } from '../components';
+import { BottomNavigator } from '@components';
+import { NavigatorScreenParams } from '@react-navigation/native';
 
-const Stack = createStackNavigator();
-const Tab = createBottomTabNavigator();
+export type RootStackParamList = {
+  Root: NavigatorScreenParams<RootTabParamList> | undefined;
+  Splash: undefined;
+  GetStarted: undefined;
+  Register: undefined;
+  Login: undefined;
+  UploadPhoto: undefined;
+  MainApp: undefined;
+  UserProfile: undefined;
+  UpdateProfile: undefined;
+  DoctorProfile: undefined;
+  Chatting: undefined;
+  ChooseDoctor: undefined;
+};
+
+export type RootTabParamList = {
+  Doctor: undefined;
+  Messages: undefined;
+  Hospitals: undefined;
+};
+
+const Stack = createStackNavigator<RootStackParamList>();
+const Tab = createBottomTabNavigator<RootTabParamList>();
 
 const MainApp = () => {
   return (
