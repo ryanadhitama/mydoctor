@@ -1,10 +1,10 @@
+import { Header, List } from '@components';
+import { colors } from '@utils';
+import { onValue, ref } from 'firebase/database';
 import React, { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
-import { Header, List } from '../../components';
-import { colors } from '../../utils';
-import { onValue, ref } from 'firebase/database';
-import { db } from '../../config/Fire';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { db } from '../../config/Fire';
 
 const ChooseDoctor = ({ navigation, route }: any) => {
   const [listDoctor, setListDoctor] = useState([]);
@@ -17,9 +17,8 @@ const ChooseDoctor = ({ navigation, route }: any) => {
     onValue(ref(db, 'doctors/'), (res) => {
       if (res.val()) {
         const data = res.val();
-        const filterData = data.filter((el: any) => el !== null);
+        const filterData = data.filter((el: any) => el !== null && el?.data?.category === itemCategory?.category);
         setListDoctor(filterData);
-        console.log(filterData);
       }
     });
   };
