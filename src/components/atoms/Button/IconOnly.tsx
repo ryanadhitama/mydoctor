@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
-import { IconBackDark, IconBackLight } from '../../../assets';
+import { IconBackDark, IconBackLight } from '@assets';
 
 const IconOnly = ({ onPress, icon }: any) => {
   // eslint-disable-next-line react/no-unstable-nested-components

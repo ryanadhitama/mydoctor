@@ -1,8 +1,8 @@
+import { colors, fonts } from '@utils';
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { colors, fonts } from '../../../utils';
-import IconOnly from './IconOnly';
+import { StyleSheet, Text, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native';
 import BtnIconSend from './BtnIconSend';
+import IconOnly from './IconOnly';
 
 type ButtonProps = {
   title?: string;
@@ -27,32 +27,34 @@ const Button = ({ type, title, onPress, icon, disable }: ButtonProps) => {
     );
   }
   return (
-    <TouchableOpacity style={styles.container(type)} onPress={onPress}>
-      <Text style={styles.text(type)}>{title}</Text>
+    <TouchableOpacity style={ContainerStyles(type as string)} onPress={onPress}>
+      <Text style={TextStyles(type as string)}>{title}</Text>
     </TouchableOpacity>
   );
 };
 
 export default Button;
 
+const ContainerStyles = (type: string): ViewStyle => ({
+  backgroundColor:
+    type === 'secondary' ? colors.button.secondary.background : colors.button.primary.background,
+  paddingVertical: 10,
+  borderRadius: 10
+});
+
+const TextStyles = (type: string): TextStyle => ({
+  fontSize: 18,
+  fontFamily: fonts.primary[600],
+  textAlign: 'center',
+  color: type === 'secondary' ? colors.button.secondary.text : colors.button.primary.text
+});
+
 const styles = StyleSheet.create({
-  container: (type) => ({
-    backgroundColor:
-      type === 'secondary' ? colors.button.secondary.background : colors.button.primary.background,
-    paddingVertical: 10,
-    borderRadius: 10
-  }),
   disableBg: {
     paddingVertical: 10,
     borderRadius: 10,
     backgroundColor: colors.button.disable.background
   },
-  text: (type) => ({
-    fontSize: 18,
-    fontFamily: fonts.primary[600],
-    textAlign: 'center',
-    color: type === 'secondary' ? colors.button.secondary.text : colors.button.primary.text
-  }),
   disableText: {
     fontSize: 18,
     fontFamily: fonts.primary[600],
