@@ -1,5 +1,20 @@
 # My Doctor
 
+## How to use
+- Install dependecies
+```bash
+yarn
+```
+- Install cocoapods
+```bash
+cd ios && pod install
+```
+- Run at IOS
+```bash
+yarn ios
+```
+
+## Screenshot
 | Splash Screen | Get Started  | Register  |
 | ------------- | ------- | --------------- |
 | <img src="https://raw.githubusercontent.com/ryanadhitama/mydoctor/master/screenshot/01.splash-screen.png" alt="drawing" /> | <img src="https://raw.githubusercontent.com/ryanadhitama/mydoctor/master/screenshot/02.get-started.png" alt="drawing" /> | <img src="https://raw.githubusercontent.com/ryanadhitama/mydoctor/master/screenshot/03.register.png" alt="drawing" /> |
