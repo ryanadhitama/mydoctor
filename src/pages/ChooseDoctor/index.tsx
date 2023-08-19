@@ -11,13 +11,16 @@ const ChooseDoctor = ({ navigation, route }: any) => {
   const itemCategory = route.params;
   useEffect(() => {
     callDoctorByCategory();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [itemCategory.category]);
 
   const callDoctorByCategory = () => {
     onValue(ref(db, 'doctors/'), (res) => {
       if (res.val()) {
         const data = res.val();
-        const filterData = data.filter((el: any) => el !== null && el?.data?.category === itemCategory?.category);
+        const filterData = data.filter(
+          (el: any) => el !== null && el?.data?.category === itemCategory?.category
+        );
         setListDoctor(filterData);
       }
     });

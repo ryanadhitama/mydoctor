@@ -9,7 +9,7 @@ export type ListType = {
   desc?: string;
   onPress?: () => void;
   icon?: string;
-  profile: {
+  profile?: {
     uri: string;
   };
 };
@@ -33,7 +33,7 @@ const List = ({ profile, name, desc, type, onPress, icon }: ListType) => {
   };
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
-      {icon ? <Icon /> : <Image source={profile} style={styles.avatar} />}
+      {!profile ? <Icon /> : <Image source={profile} style={styles.avatar} />}
       <View style={styles.content}>
         <Text style={styles.name}>{name}</Text>
         <Text style={styles.desc}>{desc}</Text>
