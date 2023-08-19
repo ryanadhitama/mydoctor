@@ -30,6 +30,7 @@ const Input = ({ label, value, onChangeText, secureTextEntry, disable }: InputTy
         secureTextEntry={secureTextEntry}
         editable={!disable}
         selectTextOnFocus={!disable}
+        autoCapitalize="none"
       />
     </View>
   );

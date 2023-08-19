@@ -1,23 +1,23 @@
-import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
-import {
-  Splash,
-  GetStarted,
-  Register,
-  Login,
-  UploadPhoto,
-  Doctor,
-  Hospitals,
-  UserProfile,
-  UpdateProfile,
-  DoctorProfile,
-  Chatting,
-  Messages,
-  ChooseDoctor
-} from '../pages';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomNavigator } from '@components';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigatorScreenParams } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import React from 'react';
+import {
+  Chatting,
+  ChooseDoctor,
+  Doctor,
+  DoctorProfile,
+  GetStarted,
+  Hospitals,
+  Login,
+  Messages,
+  Register,
+  Splash,
+  UpdateProfile,
+  UploadPhoto,
+  UserProfile
+} from '../pages';
 
 export type RootStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined;

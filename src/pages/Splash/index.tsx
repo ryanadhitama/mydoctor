@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { ILLogo } from '../../assets';
-import { colors, fonts } from '../../utils';
+import { ILLogo } from '@assets';
+import { colors, fonts } from '@utils';
 import { auth } from '../../config/Fire';
 
 export type SplashProps = {

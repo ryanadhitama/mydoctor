@@ -1,9 +1,7 @@
 import { createStore } from 'redux';
 
 const initialState = {
-  loading: false,
-  name: 'Prawito Hudoro',
-  address: 'Cisauk'
+  loading: false
 };
 
 const reducer = (state = initialState, action: any) => {
